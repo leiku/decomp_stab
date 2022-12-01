@@ -27,26 +27,26 @@ myplot.avg <- function(D, fig.xlab="your.x", fig.ylab="your.y", mycex=1){
   zz <- z$coef
   pvalue <- zz[2,4]
   if(pvalue>0.05){my.lty="dashed"}else{my.lty="solid"}
-  mytext <- paste0("slope=",round(zz[2,1], 3), fn_getstar(pvalue))
+  mytext <- paste0("slope = ",round(zz[2,1], 3), fn_getstar(pvalue))
   mytext2 <-paste("R^{2}==", round(z$r.squared,2))
   
   #get position of text
   xrange <- range(D.avg$x-D.avg$x.sem)
   x1 <- xrange[1] + 0.0*diff(xrange)
   
-  g1 <- ggplot(D.avg, aes(x=x, y=y)) + geom_point(size=2) + 
+  g1 <- ggplot(D.avg, aes(x=x, y=y)) + geom_point(size=1*mycex) + 
     geom_smooth(data=D.avg,method="lm", formula=y~x, se=T, col="black", linetype=my.lty)+
     geom_errorbar(aes(ymin=y-y.sem, ymax=y+y.sem))+
     geom_errorbarh(aes(xmin=x-x.sem, xmax=x+x.sem))+
-    annotate("text", x = x1, y = Inf, hjust=0, vjust=1.2, label = mytext, parse=F, size=5*mycex, col="blue")+
-    annotate("text", x = x1, y = Inf, hjust=0, vjust=2.5, label = mytext2, parse=T, size=5*mycex, col="blue")+
-    geom_text_repel(label=D.avg$Site)+  #from "ggrepel", add labels for each point
+    annotate("text", x = x1, y = Inf, hjust=0, vjust=1.3, label = mytext, parse=F, size=3*mycex, col="blue")+
+    annotate("text", x = x1, y = Inf, hjust=0, vjust=2.6, label = mytext2, parse=T, size=3*mycex, col="blue")+
+    geom_text_repel(label=D.avg$Site, size=2.5*mycex)+  #from "ggrepel", add labels for each point
     labs(x=fig.xlab, y=fig.ylab)+
     guides(color=guide_legend(nrow=1))+
     #xlim(min(x-x.sem), max(x+x.sem)) + 
     #ylim(min(y-y.sem), max(y+y.sem))+
     theme(panel.grid=element_blank(), panel.background=element_rect(fill='transparent', color='black'),
-          legend.position="bottom", text = element_text(size = 15*mycex))
+          legend.position="bottom", text = element_text(size = 8*mycex))
   #stat_poly_eq(formula = y~x,parse=TRUE, aes(label=stat(eq.label),group=1),label.y = 0.95,label.x = 0.05)+
     #stat_poly_eq(formula = y~x,parse=TRUE,label.y = 0.85,label.x = 0.05,aes(label=stat(p.value.label),group=1))
   return(g1)
@@ -66,8 +66,8 @@ myplot.each <- function(D, fig.xlab="your.x", fig.ylab="your.y", mycex=1){
   z2 <- summary(lm(y~x, subset(D, Study=="BioCON")))
   
   
-  mytext1 <- paste0("slope=",round(z1$coef[2,1], 3), fn_getstar(z1$coef[2,4]))
-  mytext2 <- paste0("slope=",round(z2$coef[2,1], 3), fn_getstar(z2$coef[2,4]))
+  mytext1 <- paste0("slope = ",round(z1$coef[2,1], 3), fn_getstar(z1$coef[2,4]))
+  mytext2 <- paste0("slope = ",round(z2$coef[2,1], 3), fn_getstar(z2$coef[2,4]))
   mytext1.R2 <- paste0("R^{2}==", round(z1$r.squared,2))
   mytext2.R2 <- paste0("R^{2}==", round(z2$r.squared,2))
   
@@ -80,21 +80,21 @@ myplot.each <- function(D, fig.xlab="your.x", fig.ylab="your.y", mycex=1){
   yrange <- range(D$y)
   y.ub <- yrange[2] + 0.2*diff(yrange)
   x1 <- xrange[1] + 0.0*diff(xrange)
-  x2 <- xrange[1] + 0.6*diff(xrange)
-  y1 <- y.ub - 0.0 * diff(yrange)
-  y2 <- y.ub - 0.1 * diff(yrange)
+  x2 <- xrange[1] + 0.55*diff(xrange)
+  y1 <- y.ub - 0.02 * diff(yrange)
+  y2 <- y.ub - 0.15 * diff(yrange)
   
   g2 <- ggplot(data=D, aes(x=x, y=y,color=Study)) + 
-    geom_point()+scale_color_manual(values=mycolors)+
+    geom_point(alpha=0.6)+scale_color_manual(values=mycolors)+
     geom_smooth(method = "lm",formula = y ~ x,se=T,aes(group=Study))+
-    annotate("text", x = x1, y = y1, hjust = 0, label = mytext1, parse=F, col=mycolors[1], size=5*mycex)+
-    annotate("text", x = x1, y = y2, hjust = 0, label = mytext2, parse=F, col=mycolors[2], size=5*mycex)+
-    annotate("text", x = x2, y = y1, hjust = 0, label = mytext1.R2, parse=T, col=mycolors[1], size=5*mycex)+
-    annotate("text", x = x2, y = y2, hjust = 0, label = mytext2.R2, parse=T, col=mycolors[2], size=5*mycex)+
+    annotate("text", x = x1, y = y1, hjust = 0, label = mytext1, parse=F, col=mycolors[1], size=3*mycex)+
+    annotate("text", x = x1, y = y2, hjust = 0, label = mytext2, parse=F, col=mycolors[2], size=3*mycex)+
+    annotate("text", x = x2, y = y1, hjust = 0, label = mytext1.R2, parse=T, col=mycolors[1], size=3*mycex)+
+    annotate("text", x = x2, y = y2, hjust = 0, label = mytext2.R2, parse=T, col=mycolors[2], size=3*mycex)+
     labs(x=fig.xlab,y=fig.ylab)+
     ylim(min(D$y), y.ub)+
     theme(panel.grid=element_blank(), panel.background=element_rect(fill='transparent', color='black'),
-          legend.position="bottom", text = element_text(size = 15*mycex))+
+          legend.position="bottom", text = element_text(size = 8*mycex))+
     guides(color=guide_legend(nrow=1))
   
   return(g2)

@@ -103,13 +103,17 @@ res$portfolio <- res$SAE + res$CPE.env
 source("Fn_myplot.R")
 
 
-tiff("Figs/Fig_SI_Cedar_4parts.tif", width=10, height=5, 
+tiff("Figs/Fig_SI_Cedar_4parts.tif", width=7, height=6, 
      units="in", res=300, compression = "lzw")
 
 myplot.each(res[,c("CPE.env","richness","site")], fig.xlab="Richness", 
-              fig.ylab=expression(CPE[env]), mycex=.9) +
+              fig.ylab=expression(CPE[env]), mycex=1.3) +
   myplot.each(res[,c("CPE.int","richness","site")], fig.xlab="Richness", 
-              fig.ylab=expression(CPE[int]), mycex=.9) +
+              fig.ylab=expression(CPE[int]), mycex=1.3) +
+  myplot.each(res[,c("stab.com","portfolio","site")], fig.xlab=expression(SAE%*%CPE[env]), 
+              fig.ylab=expression(Community~stability~","~S[com]), mycex=1.3) +
+  myplot.each(res[,c("portfolio","richness","site")], fig.xlab="Richness", 
+              fig.ylab=expression(SAE%*%CPE[env]), mycex=1.3) +
   plot_annotation(tag_levels = 'a')+
   plot_layout(guides = 'collect', ncol=2)&
   theme(legend.position="bottom")
