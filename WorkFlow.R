@@ -81,7 +81,7 @@ source("Data_Cedar_dataclean.R")
 #Aim: decompose community stability into 3 parts: Spop * SAE * CPE
 #Call: "Fn_decomposition.R"  and  "Fn_myplot.R"
 #Input: "Data_Survey.Rds" in Data folder
-#Output: "result_decomposition_Survey.csv" in Results folder
+#Output: "result_decomposition_Survey_3parts.csv" in Results folder
 #        "Fig_Survey_decomposition.pdf" in Figs folder
 #        "Fig_Survey_richness.pdf" in Figs folder
 #        "Fig_Survey_shannon.tif" in Figs folder
@@ -93,7 +93,7 @@ source("script_Survey_3parts.R", echo=TRUE)
 #Aim: decompose community stability into 3 parts: Spop * SAE * CPE
 #Call: "Fn_decomposition.R"  and  "Fn_myplot.R"
 #Input: "Data_Cedar_clean.Rds" in Data folder
-#Output: "result_decomposition_Cedar.csv" in Results folder
+#Output: "result_decomposition_Cedar_3parts.csv" in Results folder
 #        "Fig_Cedar_decomposition.pdf" in Figs folder
 #        "Fig_Cedar_richness.pdf" in Figs folder
 #        "Fig_Cedar_shannon.tif" in Figs folder
@@ -115,7 +115,7 @@ source("script_Cedar_3parts.R", echo=TRUE)
 #Aim: decompose community stability into 4 parts: Spop * SAE * CPEenv * CPEint
 #Call: "Fn_decomposition_surrogate_covariance.R"  and  "Fn_myplot.R"
 #Input: "Data_Survey.Rds" in Data folder
-#Output: "result_decomposition_Survey_surrogate.csv" in Results folder
+#Output: "result_decomposition_Survey_4parts.csv" in Results folder
 #        "Fig_SI_Survey_4parts.tif" in Figs folder
 
 ## Notice:  time consuming!!!  Half an hours!!!
@@ -127,7 +127,7 @@ source("script_Survey_4parts.R", echo=TRUE)
 #Aim: decompose community stability into 4 parts: Spop * SAE * CPEenv * CPEint
 #Call: "Fn_decomposition_monoculture.R"  and  "Fn_myplot.R"
 #Input: "Data_Cedar_clean.Rds" in Data folder
-#Output: "result_decomposition_Cedar_monoculture.csv" in Results folder
+#Output: "result_decomposition_Cedar_4parts.csv" in Results folder
 #        "Fig_SI_Cedar_4parts.tif" in Figs folder
 
 source("script_Cedar_4parts.R", echo=TRUE)

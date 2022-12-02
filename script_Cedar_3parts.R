@@ -32,11 +32,11 @@ for(i in 1:2){
 }
 res <- res[!is.na(res$site),]
 
-write.csv(res, "Results/result_decomposition_Cedar.csv", row.names = F)
+write.csv(res, "Results/result_decomposition_Cedar_3parts.csv", row.names = F)
 
 
 ######### plot  ########
-res <- read.csv("Results/result_decomposition_Cedar.csv")
+res <- read.csv("Results/result_decomposition_Cedar_3parts.csv")
 
 ## make log-transformation (not variables about shannon because shannon has been transformed)
 res[,c(3:8, 10)] <- apply(res[,c(3:8, 10)], 2, log10)

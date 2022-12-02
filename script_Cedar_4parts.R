@@ -71,7 +71,7 @@ res.biocon <- res.biocon[-1,]
 
 res <- rbind(res.bigbio, res.biocon)
 
-write.csv(res, "Results/result_decomposition_Cedar_monoculture.csv", row.names = F)
+write.csv(res, "Results/result_decomposition_Cedar_4parts.csv", row.names = F)
 
 
 
@@ -92,7 +92,7 @@ print(t(round(prop.table(table(res$sig, res$site), margin=2),3)))
 
 
 ####### make figures ########
-res <- read.csv("Results/result_decomposition_Cedar_monoculture.csv")
+res <- read.csv("Results/result_decomposition_Cedar_4parts.csv")
 
 ## make log-transformation (not variables about shannon because shannon has been transformed)
 res[,c(3:9,11, 13:16)] <- apply(res[,c(3:9, 11, 13:16)], 2, log10)

@@ -27,10 +27,10 @@ for(i in 1:9){
 res <- res[!is.na(res$site),]
 
 
-write.csv(res, "Results/result_decomposition_Survey.csv", row.names = F)
+write.csv(res, "Results/result_decomposition_Survey_3parts.csv", row.names = F)
 
 ####### make figures ########
-res <- read.csv("Results/result_decomposition_Survey.csv")
+res <- read.csv("Results/result_decomposition_Survey_3parts.csv")
 ## make log-transformation (not variables about shannon because shannon has been transformed)
 res[,c(3:8,10)] <- apply(res[,c(3:8, 10)], 2, log10)
 

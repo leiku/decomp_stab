@@ -30,7 +30,7 @@ for(i in 1:9){
 res <- res[-1,]
 
 
-write.csv(res, "Results/result_decomposition_Survey_surrogate.csv", row.names = F)
+write.csv(res, "Results/result_decomposition_Survey_4parts.csv", row.names = F)
 
 
 ## uncertainty test
@@ -51,7 +51,7 @@ print(t(round(prop.table(table(res$sig, res$site), margin=2),3)))
 
 
 ####### make figures ########
-res <- read.csv("Results/result_decomposition_Survey_surrogate.csv")
+res <- read.csv("Results/result_decomposition_Survey_4parts.csv")
 
 res <- res[!is.na(res$CPE.env),]
 ## make log-transformation (not variables about shannon because shannon has been transformed)
