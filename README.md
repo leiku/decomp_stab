@@ -6,7 +6,7 @@ Reuman Daniel, University of Kansas
 There are additional authors that contributed to the manuscript.
 
 ## Introduction
-This repository provides the workflow that resulted in all the results for the manuscript.
+This repository provides the workflow that resulted in all the results for the manuscript. The folder 'Results' stored the decomposition results from the original data, which are the base to generate figures in folder 'Figs'.
 
 ## Running the workflow
 See 'WorkFlow.R' for the workflow. Run it with your R working directory set to directory it is in. Notice that three dataset files should be downloaded beforehand: 
