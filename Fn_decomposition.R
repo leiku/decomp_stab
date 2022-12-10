@@ -22,11 +22,11 @@ decomposition <- function(X){
   richness <- mean(nn)  #species richness
   evenness.shannon <- alpha.shannon / log(length(p))  #evenness of the distribution of density across sp.
 
-  stab.sp <- mu / sum(apply(X, 2, sd, na.rm=T))   #the reverse of CVpop
+  stab.sp <- mu / sum(apply(X2, 2, sd, na.rm=T))   #the reverse of CVpop
   asyn <- stab.comm / stab.sp      #based on LdM
   
-  compensatory <- sqrt(sum(apply(X, 2, var, na.rm=T)) / var(tot))
-  statistical <- sum(apply(X, 2, sd, na.rm=T)) / sqrt(sum(apply(X, 2, var, na.rm=T)))
+  compensatory <- sqrt(sum(apply(X2, 2, var, na.rm=T)) / var(tot))
+  statistical <- sum(apply(X2, 2, sd, na.rm=T), na.rm=T) / sqrt(sum(apply(X2, 2, var, na.rm=T), na.rm=T))
   
   ### asyn = compensatory * statistical
   
